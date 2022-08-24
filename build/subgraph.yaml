@@ -1,6 +1,6 @@
 specVersion: 0.0.4
 schema:
-  file: ./schema.graphql
+  file: schema.graphql
 dataSources:
   - kind: ethereum
     name: MultiSig
@@ -18,7 +18,7 @@ dataSources:
         - TxSubmitted
       abis:
         - name: MultiSig
-          file: ./abis/MultiSig.json
+          file: MultiSig/abis/MultiSig.json
       eventHandlers:
         - event: TxConfirmed(indexed address,indexed uint256)
           handler: handleTxConfirmed
@@ -26,4 +26,4 @@ dataSources:
           handler: handleTxExecuted
         - event: TxSubmitted(indexed address,indexed uint256,indexed address,uint256,bytes)
           handler: handleTxSubmitted
-      file: ./src/multi-sig.ts
+      file: MultiSig/MultiSig.wasm

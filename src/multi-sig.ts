@@ -15,6 +15,7 @@ export function handleTxSubmitted(event: TxSubmittedEvent): void {
     txItem.to = event.params.to;
     txItem.value = event.params.value;
     txItem.data = event.params.data;
+    txItem.nbOfConfirmations = 0;
     txItem.IsExecuted = false;
     txItem.save();
   }

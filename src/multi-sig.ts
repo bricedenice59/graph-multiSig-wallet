@@ -26,7 +26,8 @@ export function handleTxConfirmed(event: TxConfirmedEvent): void {
   if(!txItem)
   {
     txItem = new TransactionConfirmation(event.params.nonce.toHexString());
-    txItem.owner = event.params.owner
+    txItem.owner = event.params.owner;
+    txItem.txOrigin =event.params.nonce.toHexString();
     txItem.save();
   }
   let txExistingItem = TransactionItem.load(event.params.nonce.toHexString());
@@ -39,7 +40,8 @@ export function handleTxExecuted(event: TxExecutedEvent): void {
   if(!txItem)
   {
     txItem = new TransactionExecution(event.params.nonce.toHexString());
-    txItem.owner = event.params.owner
+    txItem.owner = event.params.owner;
+    txItem.txOrigin =event.params.nonce.toHexString();
     txItem.save();
   }
   let txExistingItem = TransactionItem.load(event.params.nonce.toHexString());

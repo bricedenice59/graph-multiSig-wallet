@@ -1,0 +1,30 @@
+specVersion: 0.0.4
+schema:
+  file: ./schema.graphql
+dataSources:
+  - kind: ethereum
+    name: MultiSig
+    network: rinkeby
+    source:
+      address: "0x952694E44E5d5c17C0A89e98A20A48c57092e6F4"
+      abi: MultiSig
+      startBlock: 11263253
+    mapping:
+      kind: ethereum/events
+      apiVersion: 0.0.6
+      language: wasm/assemblyscript
+      entities:
+        - TxConfirmed
+        - TxExecuted
+        - TxSubmitted
+      abis:
+        - name: MultiSig
+          file: ./abis/MultiSig.json
+      eventHandlers:
+        - event: TxConfirmed(indexed address,indexed address,indexed uint256)
+          handler: handleTxConfirmed
+        - event: TxExecuted(indexed address,indexed address,indexed uint256)
+          handler: handleTxExecuted
+        - event: TxSubmitted(indexed address,indexed uint256,indexed address,uint256,bytes)
+          handler: handleTxSubmitted
+      file: ./src/multi-sig.ts

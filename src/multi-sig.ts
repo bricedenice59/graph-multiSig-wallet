@@ -1,5 +1,5 @@
 import {
-  TransactionItem, TransactionConfirmation, TransactionExecution
+  TransactionItem, TransactionProposal
 } from '../generated/schema'
 import {
   TxConfirmed as TxConfirmedEvent,
@@ -8,43 +8,61 @@ import {
 } from "../generated/MultiSig/MultiSig"
 
 export function handleTxSubmitted(event: TxSubmittedEvent): void {
-  let txItem = TransactionItem.load(event.params.nonce.toHexString());
+  const id = event.params.nonce.toHexString() + event.params.owner.toHexString();
+  let txItem = TransactionProposal.load(id);
   if (!txItem) {
-    txItem = new TransactionItem(event.params.nonce.toHexString());
-    txItem.owner = event.params.owner;
+    txItem = new TransactionProposal(id);
     txItem.to = event.params.to;
     txItem.value = event.params.value;
     txItem.data = event.params.data;
     txItem.nbOfConfirmations = 0;
-    txItem.IsExecuted = false;
+    txItem.isExecuted = false;
     txItem.save();
   }
 }
 
 export function handleTxConfirmed(event: TxConfirmedEvent): void {
-  let txItem = TransactionConfirmation.load(event.params.nonce.toHexString());
+  const id = event.params.nonce.toHexString() + event.params.owner.toHexString();
+  let txItem = TransactionItem.load(id);
   if(!txItem)
   {
-    txItem = new TransactionConfirmation(event.params.nonce.toHexString());
+    txItem = new TransactionItem(id);
     txItem.owner = event.params.owner;
-    txItem.txOrigin =event.params.nonce.toHexString();
+    txItem.txOriginOwner = event.params.txOriginOwner;
     txItem.save();
   }
-  let txExistingItem = TransactionItem.load(event.params.nonce.toHexString());
-  txExistingItem!.nbOfConfirmations += 1;
-  txExistingItem!.save()
+  const idOriginTxProposal = event.params.nonce.toHexString() + event.params.txOriginOwner.toHexString();
+  let txProposal = TransactionProposal.load(idOriginTxProposal);
+  let allConfirmations = txProposal!.txConfirmations;
+
+  if(!allConfirmations)
+  {
+    var confirmations:string[] = []; 
+    confirmations.push(txItem.id);
+    txProposal!.txConfirmations = confirmations;
+  }
+  else{
+    allConfirmations.push(txItem.id)
+    txProposal!.txConfirmations = allConfirmations;
+  }
+
+  txProposal!.nbOfConfirmations += 1;
+  txProposal!.save()
 }
 
 export function handleTxExecuted(event: TxExecutedEvent): void {
-  let txItem = TransactionExecution.load(event.params.nonce.toHexString());
+  const id = event.params.nonce.toHexString() + event.params.owner.toHexString();
+  let txItem = TransactionItem.load(id);
   if(!txItem)
   {
-    txItem = new TransactionExecution(event.params.nonce.toHexString());
+    txItem = new TransactionItem(id);
     txItem.owner = event.params.owner;
-    txItem.txOrigin =event.params.nonce.toHexString();
+    txItem.txOriginOwner = event.params.txOriginOwner;
     txItem.save();
   }
-  let txExistingItem = TransactionItem.load(event.params.nonce.toHexString());
-  txExistingItem!.IsExecuted = true;
-  txExistingItem!.save()
+  const idOriginTxProposal = event.params.nonce.toHexString() + event.params.txOriginOwner.toHexString();
+  let txProposal = TransactionProposal.load(idOriginTxProposal);
+  txProposal!.isExecuted = true;
+  txProposal!.txExecuted = txItem.id;
+  txProposal!.save()
 }

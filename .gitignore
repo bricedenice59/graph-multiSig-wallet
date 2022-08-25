@@ -1,2 +1,4 @@
 node_modules
 yarn.lock
+tests/.bin/
+tests/.latest.json

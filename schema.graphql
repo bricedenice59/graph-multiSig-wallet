@@ -1,0 +1,16 @@
+type TransactionItem @entity {
+  id: String!
+  owner: Bytes!
+  txOriginOwner: Bytes!
+}
+
+type TransactionProposal @entity {
+  id: String!
+  to: Bytes!
+  value: BigInt!
+  data: Bytes
+  nbOfConfirmations: Int!
+  isExecuted: Boolean!
+  txConfirmations: [TransactionItem!]
+  txExecuted: TransactionItem
+}

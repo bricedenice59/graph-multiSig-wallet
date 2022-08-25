@@ -1,16 +1,24 @@
 # The graph MultiSig Project
 
-This project allows me to track transaction proposals that are sent from the [multi-signature contract](https://github.com/bricedenice59/multisig-wallet-marketplace) that I have created.
+Subgraph has been deployed on rinkeby and is available at :
+[https://api.studio.thegraph.com/query/32658/multisig/v0.0.6](https://api.studio.thegraph.com/query/32658/multisig/v0.0.6)
 
-In just one query I can track:
+It tracks events sent from multisig wallet deployed at: [https://rinkeby.etherscan.io/address/0x952694e44e5d5c17c0a89e98a20a48c57092e6f4](https://rinkeby.etherscan.io/address/0x952694e44e5d5c17c0a89e98a20a48c57092e6f4)
 
-1.A proposal transaction has been sent and who initiated it.
+The multisig wallet project is available here: [multi-signature wallet repository](https://github.com/bricedenice59/multisig-wallet-marketplace)
 
-2.All confirmation transactions and who confirmed the proposal.
+Goal is to track in one query:
 
-3.How many confirmations have been sent so far.
+1. If a proposal transaction has been sent and who initiated it.
 
-4.If the proposal got executed and who executed it.
+2. All confirmation transactions and who confirmed the proposal.
+
+3. How many confirmations have been sent so far.
+
+4. If the proposal got executed and who executed it.
+
+
+A query example:
 
 ```shell
 {
@@ -32,7 +40,8 @@ In just one query I can track:
 ....
 ```
 
-An example
+Result:
+
 ```shell
   {
     "id": "0x20xc85d72a0a168b33d30d1140dd5d220af5652617d",

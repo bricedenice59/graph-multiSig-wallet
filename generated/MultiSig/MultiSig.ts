@@ -141,28 +141,32 @@ export class TxSubmitted__Params {
 }
 
 export class MultiSig__getTransactionResultValue0Struct extends ethereum.Tuple {
-  get to(): Address {
+  get from(): Address {
     return this[0].toAddress();
   }
 
-  get nonce(): BigInt {
-    return this[1].toBigInt();
+  get to(): Address {
+    return this[1].toAddress();
   }
 
-  get value(): BigInt {
+  get nonce(): BigInt {
     return this[2].toBigInt();
   }
 
+  get value(): BigInt {
+    return this[3].toBigInt();
+  }
+
   get data(): Bytes {
-    return this[3].toBytes();
+    return this[4].toBytes();
   }
 
   get executed(): boolean {
-    return this[4].toBoolean();
+    return this[5].toBoolean();
   }
 
   get nbOwnerConfirmationsProcessed(): i32 {
-    return this[5].toI32();
+    return this[6].toI32();
   }
 }
 
@@ -243,7 +247,7 @@ export class MultiSig extends ethereum.SmartContract {
   getTransaction(nonce: BigInt): MultiSig__getTransactionResultValue0Struct {
     let result = super.call(
       "getTransaction",
-      "getTransaction(uint256):((address,uint256,uint256,bytes,bool,uint8))",
+      "getTransaction(uint256):((address,address,uint256,uint256,bytes,bool,uint8))",
       [ethereum.Value.fromUnsignedBigInt(nonce)]
     );
 
@@ -257,7 +261,7 @@ export class MultiSig extends ethereum.SmartContract {
   ): ethereum.CallResult<MultiSig__getTransactionResultValue0Struct> {
     let result = super.tryCall(
       "getTransaction",
-      "getTransaction(uint256):((address,uint256,uint256,bytes,bool,uint8))",
+      "getTransaction(uint256):((address,address,uint256,uint256,bytes,bool,uint8))",
       [ethereum.Value.fromUnsignedBigInt(nonce)]
     );
     if (result.reverted) {

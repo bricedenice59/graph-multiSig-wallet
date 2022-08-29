@@ -14,3 +14,14 @@ type TransactionProposal @entity {
   txConfirmations: [TransactionItem!]
   txExecuted: TransactionItem
 }
+
+type Owner @entity {
+  id: Bytes!
+  lastTransactionAtTimestamp: BigInt!
+  status: OwnerStatus!
+}
+
+enum OwnerStatus {
+  In
+  Out
+}

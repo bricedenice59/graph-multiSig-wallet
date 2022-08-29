@@ -181,3 +181,53 @@ export class TransactionProposal extends Entity {
     }
   }
 }
+
+export class Owner extends Entity {
+  constructor(id: Bytes) {
+    super();
+    this.set("id", Value.fromBytes(id));
+  }
+
+  save(): void {
+    let id = this.get("id");
+    assert(id != null, "Cannot save Owner entity without an ID");
+    if (id) {
+      assert(
+        id.kind == ValueKind.BYTES,
+        `Entities of type Owner must have an ID of type Bytes but the id '${id.displayData()}' is of type ${id.displayKind()}`
+      );
+      store.set("Owner", id.toBytes().toHexString(), this);
+    }
+  }
+
+  static load(id: Bytes): Owner | null {
+    return changetype<Owner | null>(store.get("Owner", id.toHexString()));
+  }
+
+  get id(): Bytes {
+    let value = this.get("id");
+    return value!.toBytes();
+  }
+
+  set id(value: Bytes) {
+    this.set("id", Value.fromBytes(value));
+  }
+
+  get lastTransactionAtTimestamp(): BigInt {
+    let value = this.get("lastTransactionAtTimestamp");
+    return value!.toBigInt();
+  }
+
+  set lastTransactionAtTimestamp(value: BigInt) {
+    this.set("lastTransactionAtTimestamp", Value.fromBigInt(value));
+  }
+
+  get status(): string {
+    let value = this.get("status");
+    return value!.toString();
+  }
+
+  set status(value: string) {
+    this.set("status", Value.fromString(value));
+  }
+}

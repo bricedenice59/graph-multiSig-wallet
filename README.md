@@ -1,9 +1,6 @@
 # The graph MultiSig Project
 
-Subgraph has been deployed on rinkeby and is available at :
-[https://api.studio.thegraph.com/query/32658/multisig/v0.0.6](https://api.studio.thegraph.com/query/32658/multisig/v0.0.6)
-
-It tracks events sent from multisig wallet deployed at: [https://rinkeby.etherscan.io/address/0x952694e44e5d5c17c0a89e98a20a48c57092e6f4](https://rinkeby.etherscan.io/address/0x952694e44e5d5c17c0a89e98a20a48c57092e6f4)
+It tracks events sent from multisig wallet deployed at: [https://rinkeby.etherscan.io/address/0x952694e44e5d5c17c0a89e98a20a48c57092e6f4](https://rinkeby.etherscan.io/address/0xb0e3aec5d8ac4b041948266d5e50a80fdb80ca64)
 
 The multisig wallet project is available here: [multi-signature wallet repository](https://github.com/bricedenice59/multisig-wallet-marketplace)
 
@@ -17,6 +14,10 @@ Goal is to track in one query:
 
 4. If the proposal got executed and who executed it.
 
+Give it a try with [GrapQL playgroung](https://www.graphqlbin.com/v2/new) by pasting the subgraph following address
+
+Subgraph has been deployed on rinkeby and is available at :
+[https://api.studio.thegraph.com/query/32658/multisig/v0.0.7](https://api.studio.thegraph.com/query/32658/multisig/v0.0.7)
 
 A query example:
 

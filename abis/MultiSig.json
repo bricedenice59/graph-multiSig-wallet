@@ -10,23 +10,71 @@
     "stateMutability": "nonpayable",
     "type": "constructor"
   },
-  { "inputs": [], "name": "MultiSig__AddOwnerFailed", "type": "error" },
+  {
+    "inputs": [],
+    "name": "MultiSig__AddOwnerFailed",
+    "type": "error"
+  },
   {
     "inputs": [],
     "name": "MultiSig__CtorListOfOwnersHasDuplicatedAddresses",
     "type": "error"
   },
-  { "inputs": [], "name": "MultiSig__CtorNotEnoughOwners", "type": "error" },
-  { "inputs": [], "name": "MultiSig__CtorTooManyOwners", "type": "error" },
-  { "inputs": [], "name": "MultiSig__OnlyOwner", "type": "error" },
-  { "inputs": [], "name": "MultiSig__OwnerInvalidAddress", "type": "error" },
-  { "inputs": [], "name": "MultiSig__RemoveOwnerFailed", "type": "error" },
-  { "inputs": [], "name": "MultiSig__TxAlreadyConfirmed", "type": "error" },
-  { "inputs": [], "name": "MultiSig__TxAlreadyExecuted", "type": "error" },
-  { "inputs": [], "name": "MultiSig__TxAlreadySubmitted", "type": "error" },
-  { "inputs": [], "name": "MultiSig__TxCannotExecute", "type": "error" },
-  { "inputs": [], "name": "MultiSig__TxDoesNotExist", "type": "error" },
-  { "inputs": [], "name": "MultiSig__TxExecuteFailed", "type": "error" },
+  {
+    "inputs": [],
+    "name": "MultiSig__CtorNotEnoughOwners",
+    "type": "error"
+  },
+  {
+    "inputs": [],
+    "name": "MultiSig__CtorTooManyOwners",
+    "type": "error"
+  },
+  {
+    "inputs": [],
+    "name": "MultiSig__OnlyOwner",
+    "type": "error"
+  },
+  {
+    "inputs": [],
+    "name": "MultiSig__OwnerInvalidAddress",
+    "type": "error"
+  },
+  {
+    "inputs": [],
+    "name": "MultiSig__RemoveOwnerFailed",
+    "type": "error"
+  },
+  {
+    "inputs": [],
+    "name": "MultiSig__TxAlreadyConfirmed",
+    "type": "error"
+  },
+  {
+    "inputs": [],
+    "name": "MultiSig__TxAlreadyExecuted",
+    "type": "error"
+  },
+  {
+    "inputs": [],
+    "name": "MultiSig__TxAlreadySubmitted",
+    "type": "error"
+  },
+  {
+    "inputs": [],
+    "name": "MultiSig__TxCannotExecute",
+    "type": "error"
+  },
+  {
+    "inputs": [],
+    "name": "MultiSig__TxDoesNotExist",
+    "type": "error"
+  },
+  {
+    "inputs": [],
+    "name": "MultiSig__TxExecuteFailed",
+    "type": "error"
+  },
   {
     "anonymous": false,
     "inputs": [
@@ -154,7 +202,11 @@
   },
   {
     "inputs": [
-      { "internalType": "address", "name": "newOwner", "type": "address" }
+      {
+        "internalType": "address",
+        "name": "newOwner",
+        "type": "address"
+      }
     ],
     "name": "addOwner",
     "outputs": [],
@@ -163,7 +215,11 @@
   },
   {
     "inputs": [
-      { "internalType": "uint256", "name": "_nonce", "type": "uint256" }
+      {
+        "internalType": "uint256",
+        "name": "_nonce",
+        "type": "uint256"
+      }
     ],
     "name": "confirmTx",
     "outputs": [],
@@ -172,7 +228,11 @@
   },
   {
     "inputs": [
-      { "internalType": "uint256", "name": "_nonce", "type": "uint256" }
+      {
+        "internalType": "uint256",
+        "name": "_nonce",
+        "type": "uint256"
+      }
     ],
     "name": "executeTx",
     "outputs": [],
@@ -196,7 +256,11 @@
     "inputs": [],
     "name": "getOwnersAddresses",
     "outputs": [
-      { "internalType": "address[]", "name": "", "type": "address[]" }
+      {
+        "internalType": "address[]",
+        "name": "",
+        "type": "address[]"
+      }
     ],
     "stateMutability": "view",
     "type": "function"
@@ -205,24 +269,57 @@
     "inputs": [],
     "name": "getPercentageOfOwnersRequiredForApproval",
     "outputs": [
-      { "internalType": "uint8", "name": "nbOwnersRequired", "type": "uint8" }
+      {
+        "internalType": "uint8",
+        "name": "nbOwnersRequired",
+        "type": "uint8"
+      }
     ],
     "stateMutability": "pure",
     "type": "function"
   },
   {
     "inputs": [
-      { "internalType": "uint256", "name": "nonce", "type": "uint256" }
+      {
+        "internalType": "uint256",
+        "name": "nonce",
+        "type": "uint256"
+      }
     ],
     "name": "getTransaction",
     "outputs": [
       {
         "components": [
-          { "internalType": "address", "name": "to", "type": "address" },
-          { "internalType": "uint256", "name": "nonce", "type": "uint256" },
-          { "internalType": "uint256", "name": "value", "type": "uint256" },
-          { "internalType": "bytes", "name": "data", "type": "bytes" },
-          { "internalType": "bool", "name": "executed", "type": "bool" },
+          {
+            "internalType": "address",
+            "name": "from",
+            "type": "address"
+          },
+          {
+            "internalType": "address",
+            "name": "to",
+            "type": "address"
+          },
+          {
+            "internalType": "uint256",
+            "name": "nonce",
+            "type": "uint256"
+          },
+          {
+            "internalType": "uint256",
+            "name": "value",
+            "type": "uint256"
+          },
+          {
+            "internalType": "bytes",
+            "name": "data",
+            "type": "bytes"
+          },
+          {
+            "internalType": "bool",
+            "name": "executed",
+            "type": "bool"
+          },
           {
             "internalType": "uint8",
             "name": "nbOwnerConfirmationsProcessed",
@@ -239,7 +336,11 @@
   },
   {
     "inputs": [
-      { "internalType": "address", "name": "owner", "type": "address" }
+      {
+        "internalType": "address",
+        "name": "owner",
+        "type": "address"
+      }
     ],
     "name": "removeOwner",
     "outputs": [],
@@ -248,10 +349,26 @@
   },
   {
     "inputs": [
-      { "internalType": "address", "name": "_to", "type": "address" },
-      { "internalType": "uint256", "name": "_nonce", "type": "uint256" },
-      { "internalType": "uint256", "name": "_value", "type": "uint256" },
-      { "internalType": "bytes", "name": "_data", "type": "bytes" }
+      {
+        "internalType": "address",
+        "name": "_to",
+        "type": "address"
+      },
+      {
+        "internalType": "uint256",
+        "name": "_nonce",
+        "type": "uint256"
+      },
+      {
+        "internalType": "uint256",
+        "name": "_value",
+        "type": "uint256"
+      },
+      {
+        "internalType": "bytes",
+        "name": "_data",
+        "type": "bytes"
+      }
     ],
     "name": "submitTx",
     "outputs": [],

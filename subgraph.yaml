@@ -6,9 +6,9 @@ dataSources:
     name: MultiSig
     network: rinkeby
     source:
-      address: "0xB0e3AeC5D8aC4B041948266d5e50a80fDB80ca64"
+      address: "0x820dcbd2376FF85818251b621ffb627e209358de"
       abi: MultiSig
-      startBlock: 11286070
+      startBlock: 11301991
     mapping:
       kind: ethereum/events
       apiVersion: 0.0.6
